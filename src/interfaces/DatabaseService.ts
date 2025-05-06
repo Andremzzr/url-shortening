@@ -1,7 +1,7 @@
 import { Pool } from 'pg'
 
 export interface DatabaseService {
-    con: Pool
-    createURL(goToURL: string): Promise<boolean>
-    getURL(hash: string): Promise<string>
+    connector: Pool
+    createURL(goToURL: string, hash: string): void
+    getURL(hash: string): Promise<string | null>
 }
