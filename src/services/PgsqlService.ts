@@ -10,7 +10,7 @@ const pool = new Pool({
 });
 
 export class PgsqlService implements DatabaseService {
-    connector: Pool
+    private connector: Pool
 
     constructor(con: Pool) 
     {
@@ -51,4 +51,4 @@ export class PgsqlService implements DatabaseService {
 
 const databaseService = new PgsqlService(pool)
 
-module.exports = databaseService;
+export default databaseService

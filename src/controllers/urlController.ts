@@ -1,6 +1,6 @@
 import { isValidURL } from "../utils/isValidURL";
 import { generateHash } from "./generateHash";
-
+import * as dbService from "../services/PgsqlService";
 export async function createURLController( req, res ) {
     const { url } = req.body
 
@@ -13,4 +13,9 @@ export async function createURLController( req, res ) {
     const hash = generateHash(url)
 
     return res.status(200).json({message: 'Success!', data: { url: `${hash}`}});
+}
+
+export async function getURL(req, res) {
+    const { hash } = req.params;
+
 }

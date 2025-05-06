@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { createURLController } from "../controllers/urlController";
+import { createURLController, getURL } from "../controllers/urlController";
 const router =  Router()
 
-router.post('/encode', createURLController)
+router.get("/:hash", getURL);
+router.post('/encode', createURLController);
 
 module.exports = router;
