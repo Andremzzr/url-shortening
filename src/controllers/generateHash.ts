@@ -1,11 +1,5 @@
-import { randomBytes } from 'crypto';
+import { md5 } from 'js-md5';
   
-export function generateHash(): string {
-    const SALTSTRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
-    const saltLength = SALTSTRING.length
-    const HASH_LENGTH = 7
-    const bytes = randomBytes(HASH_LENGTH);
-
-    return Array.from(bytes, (byte) => SALTSTRING[  byte % saltLength]).join("")
-
+export function generateHash(hashedString: string): string {
+    return md5(hashedString)
 }

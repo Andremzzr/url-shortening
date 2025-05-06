@@ -10,7 +10,7 @@ export async function createURLController( req, res ) {
         return res.status(400).json({message: "Invalid URL"});
     }
 
-    const hash = generateHash()
+    const hash = generateHash(url)
 
     return res.status(200).json({message: 'Success!', data: { url: `${hash}`}});
 }

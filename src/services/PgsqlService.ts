@@ -39,7 +39,7 @@ export class PgsqlService implements DatabaseService {
                 [hash]
               );
             
-              return result[0]
+              return result.rows[0]
 
         } catch (error) {
             throw new Error("Return ROW Error");
@@ -47,3 +47,8 @@ export class PgsqlService implements DatabaseService {
         }
     }
 }
+
+
+const databaseService = new PgsqlService(pool)
+
+module.exports = databaseService;
