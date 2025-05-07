@@ -13,13 +13,13 @@ export async function createURLController( req, res ) {
 
     const hash = generateHash(url);
 
-    const checkURL = databaseService.getURL(hash)
+    const checkURL = await databaseService.getURL(hash)
 
     if ( checkURL ) {
         return res.status(200).json({message: 'Success!', data: { url: `${process.env.BASE_URL}/${hash}`}});
     }
 
-    const createdUrl = databaseService.createURL(url, hash)
+    const createdUrl = await databaseService.createURL(url, hash)
 
     if ( !createdUrl ) {
         return res.status(400).json({message: "Problem while shortcurting the URL"});

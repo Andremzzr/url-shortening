@@ -39,7 +39,11 @@ export class PgsqlService implements DatabaseService {
                 [hash]
               );
             
-            return result.rows[0]["original_url"]
+              if (result.rowCount === 0) {
+                return null;
+              }
+              
+              return result.rows[0].original_url;
 
         } catch (error) {
             throw new Error("Return ROW Error");
