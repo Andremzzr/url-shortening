@@ -12,5 +12,4 @@ app.use(express.json())
 
 app.use('/' , urlEncoderRoutes)
 
-
-app.listen(3333, () => console.log('server running on port 3333'))
+app.listen(3333, () => console.log('server running on port http://localhost:3333'))

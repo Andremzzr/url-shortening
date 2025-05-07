@@ -35,11 +35,11 @@ export class PgsqlService implements DatabaseService {
     async getURL(hash: string): Promise<string | null> {
         try {
             const result: QueryResult = await this.connector.query(
-                'SELECT url WHERE hash = $1'
+                'SELECT original_url from url WHERE hash = $1',
                 [hash]
               );
             
-              return result.rows[0]
+            return result.rows[0]["original_url"]
 
         } catch (error) {
             throw new Error("Return ROW Error");
