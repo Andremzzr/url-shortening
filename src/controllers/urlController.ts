@@ -13,15 +13,9 @@ export async function createURLController( req, res ) {
 
     const hash = generateHash(url);
 
-    const checkURL = await databaseService.getURL(hash)
+    const getORCreateURL = await databaseService.createURL(url, hash)
 
-    if ( checkURL ) {
-        return res.status(200).json({message: 'Success!', data: { url: `${process.env.BASE_URL}/${hash}`}});
-    }
-
-    const createdUrl = await databaseService.createURL(url, hash)
-
-    if ( !createdUrl ) {
+    if ( !getORCreateURL ) {
         return res.status(400).json({message: "Problem while shortcurting the URL"});
     }
 
