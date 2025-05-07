@@ -25,14 +25,12 @@ export async function createURLController( req, res ) {
 
 export async function getURL(req, res) {
     const { hash } = req.params;
-    console.log(hash)
     
     if( !hash ) {
         return res.status(400).json({message: "Invalid hash"});
     }
 
     const getURL = await databaseService.getURL(hash);
-    console.log("get url",getURL)
 
     if ( !getURL ) {
         return res.status(400).json({message: "URL was not found"});
