@@ -13,6 +13,12 @@ export async function createURLController( req, res ) {
 
     const hash = generateHash(url);
 
+    const checkURL = databaseService.getURL(hash)
+
+    if ( checkURL ) {
+        return res.status(200).json({message: 'Success!', data: { url: `${process.env.BASE_URL}/${hash}`}});
+    }
+
     const createdUrl = databaseService.createURL(url, hash)
 
     if ( !createdUrl ) {
